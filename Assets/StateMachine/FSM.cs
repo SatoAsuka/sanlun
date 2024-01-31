@@ -50,10 +50,10 @@ public class FSM : MonoBehaviour
     {
         currentState.OnUpdate();
 
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            parameter.getHit = true;
-        }
+        //if (Input.GetKeyDown(KeyCode.Return))
+        //{
+        //    parameter.getHit = true;
+        //}
     }
 
     public void TransitionState(StateType type)
