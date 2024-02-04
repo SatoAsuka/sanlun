@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;//访问类，角色控制需要
 
-namespace StateMachine
+
+public class PlayerMovements : MonoBehaviour
 {
     public class PlayerMovement : MonoBehaviour
     {
@@ -13,11 +15,31 @@ namespace StateMachine
         [SerializeField] private float checkRadius = .2f;
         new private Rigidbody2D rigidbody;
         private Animator animator;
+        public PlayerInputControl inputControl;
 
-        private float inputX;
+        private Vector2 inputX;
         [SerializeField] private bool isGround = true;
         [SerializeField] private LayerMask layer;
 
+        
+
+        private void Awake()
+        {
+            inputControl = new PlayerInputControl();
+
+            inputControl.GamePlay.Jump.started += Jump;
+        }
+
+
+        private void OnEnable()//物体启动时，inputControl也启动
+        {
+            inputControl.Enable();
+        }
+
+        private void OnDisable()//物体关闭时，inputControl也关闭
+        {
+            inputControl.Disable();
+        }
         void Start()
         {
             rigidbody = GetComponent<Rigidbody2D>();
@@ -26,29 +48,28 @@ namespace StateMachine
 
         void Update()
         {
-            inputX = Input.GetAxisRaw("Horizontal");
+            inputX = inputControl.GamePlay.Move.ReadValue<Vector2>(); ;
             isGround = Physics2D.OverlapCircle(transform.position, checkRadius, layer);
 
             Move();
-            Jump();
             Flip();
         }
 
         private void Flip()
         {
-            if (inputX == -1)
+            if (inputX.x < -1)
             {
                 transform.localScale = new Vector3(-1, 1, 1);
             }
-            else if (inputX == 1)
+            else if (inputX.x > 1)
             {
                 transform.localScale = new Vector3(1, 1, 1);
             }
         }
 
-        private void Jump()
+        private void Jump(InputAction.CallbackContext context)
         {
-            if (isGround && Input.GetButtonDown("Jump"))
+            if (isGround)
             {
                 rigidbody.velocity = new Vector2(0, jumpSpeed);
                 animator.SetTrigger("Jump");
@@ -57,7 +78,7 @@ namespace StateMachine
 
         private void Move()
         {
-            rigidbody.velocity = new Vector2(inputX * moveSpeed, rigidbody.velocity.y);
+            rigidbody.velocity = new Vector2(inputX.x * moveSpeed, rigidbody.velocity.y);
 
             animator.SetBool("isGround", isGround);
             animator.SetFloat("Horizontal", rigidbody.velocity.x);
