@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss1 : MonoBehaviour
+public class Boss3 : MonoBehaviour
 {
     // Start is called before the first frame update
     private Animator Anim;
