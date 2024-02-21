@@ -24,8 +24,9 @@ public class Boss2 : MonoBehaviour
     public GameObject player;
 
 
-    Boss2State state;
+    public Boss2State state;
 
+    public float HP;
     public float waitTime;
     public float currTime;
     public float findDis;
@@ -55,6 +56,7 @@ public class Boss2 : MonoBehaviour
     void Update()
     {
         dis = Mathf.Abs(boss_trans.position.x - player.transform.position.x);
+        
         switch (state) 
         {
             case Boss2State.Idle:
@@ -79,7 +81,7 @@ public class Boss2 : MonoBehaviour
                 }
             case Boss2State.Death: 
                 {
-                    boss_ani.Play("Death");
+                    Death();
                     break;
                 }
             case Boss2State.Attack: 
@@ -95,6 +97,26 @@ public class Boss2 : MonoBehaviour
         }
     }
 
+    private void Death()
+    {
+        boss_ani.Play("Death");
+        if (HP == 0)
+        {
+
+        }
+        else
+        {
+            int boss_dir = (int)(boss_trans.position.x - player.transform.position.x);
+            if (boss_dir > 0)
+                boss_dir = 1;
+            else boss_dir = -1;
+
+            boss_rb.velocity = new Vector2(boss_dir * speed * Time.deltaTime, boss_rb.velocity.y);
+            transform.localScale = new Vector3(boss_dir, 1, 1);
+        }
+
+    }
+
     private void Walk2()
     {
         boss_ani.Play("Walk2");
@@ -104,6 +126,7 @@ public class Boss2 : MonoBehaviour
         else boss_dir = -1;
 
         boss_rb.velocity = new Vector2(boss_dir * speed * Time.deltaTime, boss_rb.velocity.y);
+        transform.localScale = new Vector3(boss_dir, 1, 1);
 
         if (dis > findDis)
         {
@@ -124,6 +147,7 @@ public class Boss2 : MonoBehaviour
         else boss_dir = -1;
 
         boss_rb.velocity = new Vector2(-1 * boss_dir * speed * Time.deltaTime, boss_rb.velocity.y);
+        transform.localScale = new Vector3(boss_dir, 1, 1);
     }
 
     private void Idle()
@@ -142,5 +166,11 @@ public class Boss2 : MonoBehaviour
             else if(nub == 4)
                 state = Boss2State.Walk2;
         }
-    }   
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if(state != Boss2State.Death && state != Boss2State.Cast && state != Boss2State.Hurt)
+            state = Boss2State.Attack;
+    }
 }
