@@ -110,82 +110,19 @@ TextureImporter:
       name: Bringer-of-Death_Death_9_0
       rect:
         serializedVersion: 2
-        x: 87
-        y: 18
-        width: 32
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 140
+        height: 93
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9a6da0a7e7445c910800000000000000
-      internalID: 1856965731364296361
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bringer-of-Death_Death_9_1
-      rect:
-        serializedVersion: 2
-        x: 103
-        y: 62
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 85332b4b02459eec0800000000000000
-      internalID: -3537203532875549864
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bringer-of-Death_Death_9_2
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 40
-        width: 9
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 641561116ee63b450800000000000000
-      internalID: 6103343854425362758
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bringer-of-Death_Death_9_3
-      rect:
-        serializedVersion: 2
-        x: 98
-        y: 25
-        width: 9
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 345ba7513d4198070800000000000000
-      internalID: 8109035500888307011
+      spriteID: 3b67a428cc4bbcf4ebb5eb98b1b2c23d
+      internalID: 641866678
       vertices: []
       indices: 
       edges: []
@@ -193,14 +130,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e568d488f54fb1843a28f0405ee98444
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bringer-of-Death_Death_9_0: 641866678
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

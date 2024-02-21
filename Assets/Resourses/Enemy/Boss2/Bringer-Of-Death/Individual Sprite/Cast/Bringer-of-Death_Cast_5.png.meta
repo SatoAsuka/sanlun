@@ -101,19 +101,19 @@ TextureImporter:
       name: Bringer-of-Death_Cast_5_0
       rect:
         serializedVersion: 2
-        x: 74
+        x: 0
         y: 0
-        width: 52
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 140
+        height: 93
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2cff815bc2bea74f0800000000000000
-      internalID: -830092604047032382
+      spriteID: 3af8b21a76613ff42bb918141aadea05
+      internalID: -62170421
       vertices: []
       indices: 
       edges: []
@@ -121,14 +121,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5f8528a0029a47f4284616763e7e728a
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bringer-of-Death_Cast_5_0: -62170421
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

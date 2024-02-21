@@ -101,19 +101,19 @@ TextureImporter:
       name: Bringer-of-Death_Spell_1_0
       rect:
         serializedVersion: 2
-        x: 51
-        y: 38
-        width: 34
-        height: 21
+        x: 0
+        y: 0
+        width: 140
+        height: 93
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fe1bacc729d7fdbb0800000000000000
-      internalID: -4909067000698195473
+      spriteID: 999a0a41ba7294841b303403c92c7067
+      internalID: -1573135001
       vertices: []
       indices: 
       edges: []
@@ -121,14 +121,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 6de4ad1380756584182a34e747cf98e8
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bringer-of-Death_Spell_1_0: -1573135001
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

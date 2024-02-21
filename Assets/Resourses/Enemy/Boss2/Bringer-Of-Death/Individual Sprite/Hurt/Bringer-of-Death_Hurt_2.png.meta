@@ -101,19 +101,19 @@ TextureImporter:
       name: Bringer-of-Death_Hurt_2_0
       rect:
         serializedVersion: 2
-        x: 85
+        x: 0
         y: 0
-        width: 43
-        height: 55
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 140
+        height: 93
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 669e14bdd5fff89d0800000000000000
-      internalID: -2769714467233994394
+      spriteID: 56bc026c1e653064da364544314712bd
+      internalID: 1379104410
       vertices: []
       indices: 
       edges: []
@@ -121,14 +121,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 687b81f767a012949969a6467f6a6adb
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bringer-of-Death_Hurt_2_0: 1379104410
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

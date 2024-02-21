@@ -107,61 +107,19 @@ TextureImporter:
       name: Bringer-of-Death_Cast_9_0
       rect:
         serializedVersion: 2
-        x: 71
-        y: 73
-        width: 47
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 79c33ad5fa71a9420800000000000000
-      internalID: 2637446573736541335
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bringer-of-Death_Cast_9_1
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 66
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 78170d3455ba0c880800000000000000
-      internalID: -8592679706324602489
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bringer-of-Death_Cast_9_2
-      rect:
-        serializedVersion: 2
-        x: 84
+        x: 0
         y: 0
-        width: 42
-        height: 67
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 140
+        height: 93
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 50031f007d29a9740800000000000000
-      internalID: 5159597775237754885
+      spriteID: 1e02e3c5cc0c932429507e8415dbc8d9
+      internalID: -1482119326
       vertices: []
       indices: 
       edges: []
@@ -169,14 +127,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2394b3a163984ea4bb5b07c1909887f2
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bringer-of-Death_Cast_9_0: -1482119326
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

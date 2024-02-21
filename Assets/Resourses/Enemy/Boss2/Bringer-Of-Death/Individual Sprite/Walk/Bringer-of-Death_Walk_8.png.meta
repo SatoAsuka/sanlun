@@ -101,19 +101,19 @@ TextureImporter:
       name: Bringer-of-Death_Walk_8_0
       rect:
         serializedVersion: 2
-        x: 75
+        x: 0
         y: 0
-        width: 52
-        height: 57
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 140
+        height: 93
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8d677ca9bb33fdcb0800000000000000
-      internalID: -4837090593923959080
+      spriteID: 43d90097c5db83c45b57d2d9881c1f09
+      internalID: -1075944639
       vertices: []
       indices: 
       edges: []
@@ -121,14 +121,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a997b443578009d429261c6d4a356296
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bringer-of-Death_Walk_8_0: -1075944639
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
