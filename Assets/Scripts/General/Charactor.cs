@@ -5,12 +5,10 @@ using UnityEngine.Events;
 
 public class Character : MonoBehaviour
 {
-    [Header("基本属性")]
     public float maxHealth;//最大血量
     public float curentHealth;//目前血量
     public bool isBoss;
 
-    [Header("受伤无敌")]
     public float invulnerableDuration;//设定无敌时间
     private float invulnerableCounter;//无敌时间，用于计时
     public bool invulnerable;
@@ -66,7 +64,7 @@ public class Character : MonoBehaviour
 
     }
     #region 无敌状态
-    private void TriggerInvulnerable()
+    public void TriggerInvulnerable()
     {
         if (!invulnerable)
         {

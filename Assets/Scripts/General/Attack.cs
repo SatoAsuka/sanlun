@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    [Header("»ù±¾ÊôĞÔ")]
     public int damage;
     public float attackRange;
     public float attackRate;

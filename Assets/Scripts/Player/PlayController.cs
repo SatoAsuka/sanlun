@@ -9,9 +9,12 @@ public class PlayController : MonoBehaviour
 
     public PlayerInputControl inputControl;
     public Vector2 inputDirection;
+    public Animator player_ani;
     private Rigidbody2D rb;
     private PhysicsCheck physicscheck;
     private PlayerAnimation playerAnimation;
+    private Character character;
+    
 
     //[Header("基本参数")]
     public float speed;
@@ -28,6 +31,8 @@ public class PlayController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         physicscheck = GetComponent<PhysicsCheck>();
         playerAnimation = GetComponent<PlayerAnimation>();
+        character = GetComponent<Character>();
+        player_ani = GetComponent<Animator>();
 
         inputControl = new PlayerInputControl();
 
@@ -68,7 +73,8 @@ public class PlayController : MonoBehaviour
 
     public void Move()
     {
-        rb.velocity = new Vector2(inputDirection.x * speed * Time.deltaTime, rb.velocity.y);//人物移动
+        if(!isDash)
+            rb.velocity = new Vector2(inputDirection.x * speed * Time.deltaTime, rb.velocity.y);//人物移动
 
         #region 人物翻转
         int faceDir = (int)transform.localScale.x;
@@ -111,7 +117,13 @@ public class PlayController : MonoBehaviour
     {   
         playerAnimation.PlayerDash();
         isDash = true;
-        rb.AddForce(transform.right * dashForce, ForceMode2D.Impulse);
+        character.TriggerInvulnerable();
+        rb.AddForce((int)transform.localScale.x * transform.right * dashForce, ForceMode2D.Impulse);
+    }
+
+    public void PlayerHurt()
+    {
+        player_ani.Play("Death");
     }
 }
 
