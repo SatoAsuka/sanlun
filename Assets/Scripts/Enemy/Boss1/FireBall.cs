@@ -12,7 +12,7 @@ public class FireBall : MonoBehaviour
 
     public float Speed;
 
-    public float Damge;
+    public int Damge;
 
     public float LifeTime;
 
@@ -26,7 +26,7 @@ public class FireBall : MonoBehaviour
 
         Speed = 5;
 
-        Damge = 8f;
+        Damge = 8;
 
         LifeTime = 7f;
     }
@@ -42,12 +42,12 @@ public class FireBall : MonoBehaviour
     }
     public void Move()
     {
-        if (Boss.transform.localScale.x < 0)
+        if (Boss.transform.localScale.x > 0)
         {
             transform.localScale = new Vector3(dir.x, dir.y, dir.z);
             transform.position += Speed * -transform.right * Time.deltaTime;
         }
-        else if (Boss.transform.localScale.x > 0)
+        else if (Boss.transform.localScale.x < 0)
         {
             transform.localScale = new Vector3(-dir.x, dir.y, dir.z);
             transform.position += Speed * transform.right * Time.deltaTime;
@@ -65,20 +65,24 @@ public class FireBall : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            //animator.Play("Hit");
-            //if (transform.position.x < collision.transform.position.x)
-            //{
-            //    collision.GetComponent<PlayerCharacter>().BeHit(Vector2.right, Damge);
-            //}
-            //else if (transform.position.x >= collision.transform.position.x)
-            //{
-            //    collision.GetComponent<PlayerCharacter>().BeHit(Vector2.left, Damge);
-            //}
+            animator.Play("Hit");
 
+            // 获取攻击力（damage）为火球的伤害值
+            int damage = Damge;
+
+            // 碰撞到的对象应该具有 Character 组件
+            Character character = collision.GetComponent<Character>();
+
+            // 如果 Character 组件不为空，则调用 TakeDamage 方法
+            if (character != null)
+            {
+                character.TakeDamage(new Attack { damage = damage });
+            }
         }
         else if (collision.CompareTag("Ground"))
         {
             animator.Play("Boom");
         }
     }
+
 }

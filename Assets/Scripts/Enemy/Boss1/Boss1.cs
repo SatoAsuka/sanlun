@@ -4,10 +4,10 @@ using UnityEngine;
 
 public enum BossState
 {
+    Idle,
     FireBall,
     FirePillar,
     Dash,
-    Idle,
     BeHit,
     Death,
 }
@@ -33,7 +33,7 @@ public class Boss1 : MonoBehaviour
     public float MaxHp;
     public float Hp;
 
-    public float MoveDamge;
+    public int MoveDamge;
 
     public float Speed;
 
@@ -128,28 +128,29 @@ public class Boss1 : MonoBehaviour
     }
     public void FireBallCreate() //生成火球(动画帧事件)
     {
-        if (C_tra.localScale.x == Initial.x)
-        {
-            for (int i = -5; i < 2; i++)
-            {
-                GameObject fireball = Instantiate(Fireball, null);
-                Vector3 dir = Quaternion.Euler(0, i * 15, 0) * -transform.right;
-                fireball.transform.position = Mouth.position + dir * 1.0f;
-                fireball.transform.rotation = Quaternion.Euler(0, 0, i * 15);
-            }
-        }
-        else if (C_tra.localScale.x == -Initial.x)
+        if (C_tra.localScale.x == Initial.x) // Boss 朝右
         {
             for (int i = -1; i < 5; i++)
             {
                 GameObject fireball = Instantiate(Fireball, null);
-                Vector3 dir = Quaternion.Euler(0, i * 15, 0) * transform.right;
+                Vector3 dir = Quaternion.Euler(30, i * 15, 0) * -transform.right; // 使用 transform.right
+                fireball.transform.position = Mouth.position + dir * 1.0f;
+                fireball.transform.rotation = Quaternion.Euler(0, 0, i * 15);
+            }
+        }
+        else if (C_tra.localScale.x == -Initial.x) // Boss 朝左
+        {
+            for (int i = -5; i < 2; i++)
+            {
+                GameObject fireball = Instantiate(Fireball, null);
+                Vector3 dir = Quaternion.Euler(30, i * 15, 0) * transform.right; // 使用 -transform.right
                 fireball.transform.position = Mouth.position + dir * 1.0f;
                 fireball.transform.rotation = Quaternion.Euler(0, 0, i * 15);
             }
         }
         FireBallAttackTime -= 1;
     }
+
     public void DashSkill()
     {
         if (!isDead)
@@ -166,12 +167,12 @@ public class Boss1 : MonoBehaviour
     {
         if (C_tra.localScale.x == Initial.x)
         {
-            C_ani.Play("Attack");
+            C_ani.Play("Walk");
             C_rig.velocity = new Vector2(-Speed, C_rig.velocity.y);
         }
         else if (C_tra.localScale.x == -Initial.x)
         {
-            C_ani.Play("Attack");
+            C_ani.Play("Walk");
             C_rig.velocity = new Vector2(Speed, C_rig.velocity.y);
         }
     }
@@ -283,24 +284,28 @@ public class Boss1 : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("AirWall"))
+        if (collision.collider.CompareTag("AirWall") && state == BossState.Dash)
         {
             C_tra.localScale = new Vector3(-C_tra.localScale.x, C_tra.localScale.y, C_tra.localScale.z);
             state = BossState.FireBall;
         }
         else if (collision.collider.CompareTag("Player") && state == BossState.Dash)
         {
+            Debug.Log("与Player碰撞");
             //如果Boss正在执行Dash技能，并且与被标记为“Player”的碰撞体发生了碰撞，
-            //那么Boss将会对玩家造成伤害（BeHit），根据玩家的位置来确定伤害的方向。待接入Player.
+            //那么Boss将会对玩家造成伤害（BeHit），根据玩家的位置来确定伤害的方向。
 
-            //if (C_tra.position.x < Player.transform.position.x)
-            //{
-            //    collision.collider.GetComponent<PlayerCharacter>().BeHit(Vector2.right, MoveDamge);
-            //}
-            //else if (C_tra.position.x >= Player.transform.position.x)
-            //{
-            //    collision.collider.GetComponent<PlayerCharacter>().BeHit(Vector2.left, MoveDamge);
-            //}
+            // 获取攻击力（damage）为火球的伤害值
+            int damage = MoveDamge;
+
+            // 碰撞到的对象应该具有 Character 组件
+            Character character = collision.gameObject.GetComponent<Character>();
+
+            // 如果 Character 组件不为空，则调用 TakeDamage 方法
+            if (character != null)
+            {
+                character.TakeDamage(new Attack { damage = damage });
+            }
         }
     }
 }
