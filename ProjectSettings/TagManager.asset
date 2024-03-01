@@ -6,7 +6,7 @@ TagManager:
   tags:
   - AirWall
   - Ground
-  - Boss3
+  - Boss
   layers:
   - Default
   - TransparentFX

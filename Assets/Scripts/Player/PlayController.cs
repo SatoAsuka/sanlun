@@ -2,18 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;//·ÃÎÊÀà£¬½ÇÉ«¿ØÖÆÐèÒª
+using UnityEngine.InputSystem;//ï¿½ï¿½ï¿½ï¿½ï¿½à£¬ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òª
 
 public class PlayController : MonoBehaviour
 {
 
     public PlayerInputControl inputControl;
     public Vector2 inputDirection;
+    public Animator player_ani;
     private Rigidbody2D rb;
     private PhysicsCheck physicscheck;
     private PlayerAnimation playerAnimation;
+    private Character character;
+    
 
-    //[Header("»ù±¾²ÎÊý")]
+    //[Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float speed;
     public float jumpForce;
     public float dashForce;
@@ -29,6 +32,8 @@ public class PlayController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         physicscheck = GetComponent<PhysicsCheck>();
         playerAnimation = GetComponent<PlayerAnimation>();
+        character = GetComponent<Character>();
+        player_ani = GetComponent<Animator>();
 
         inputControl = new PlayerInputControl();
 
@@ -45,12 +50,12 @@ public class PlayController : MonoBehaviour
         curentJumpTimes = 0;
     }
 
-    private void OnEnable()//ÎïÌåÆô¶¯Ê±£¬inputControlÒ²Æô¶¯
+    private void OnEnable()//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½inputControlÒ²ï¿½ï¿½ï¿½ï¿½
     {
         inputControl.Enable();
     }
 
-    private void OnDisable()//ÎïÌå¹Ø±ÕÊ±£¬inputControlÒ²¹Ø±Õ
+    private void OnDisable()//ï¿½ï¿½ï¿½ï¿½Ø±ï¿½Ê±ï¿½ï¿½inputControlÒ²ï¿½Ø±ï¿½
     {
         inputControl.Disable();
     }
@@ -71,9 +76,10 @@ public class PlayController : MonoBehaviour
 
     public void Move()
     {
-        rb.velocity = new Vector2(inputDirection.x * speed * Time.deltaTime, rb.velocity.y);//ÈËÎïÒÆ¶¯
+        if(!isDash)
+            rb.velocity = new Vector2(inputDirection.x * speed * Time.deltaTime, rb.velocity.y);//ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
 
-        #region ÈËÎï·­×ª
+        #region ï¿½ï¿½ï¿½ï·­×ª
         int faceDir = (int)transform.localScale.x;
         if (inputDirection.x < 0)
         {
@@ -87,7 +93,7 @@ public class PlayController : MonoBehaviour
         #endregion
     }
 
-    #region jumpÏà¹Ø
+    #region jumpï¿½ï¿½ï¿½
     private void Jump(InputAction.CallbackContext context)
     {
         if (curentJumpTimes < jumpMoreTimes)
@@ -97,7 +103,7 @@ public class PlayController : MonoBehaviour
         }
     }
 
-    private void JumpMore()//µÚÒ»´ÎÆðÌø¼ì²â¹ý¿ì£¬µ¼ÖÂÌøÔ¾´ÎÊýË¢ÐÂ
+    private void JumpMore()//ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¾ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½
     {
         if(physicscheck.isGround && curentJumpTimes != 0) 
             curentJumpTimes = 0;
@@ -117,8 +123,13 @@ public class PlayController : MonoBehaviour
     {   
         playerAnimation.PlayerDash();
         isDash = true;
-        rb.AddForce(transform.right * dashForce, 
-            ForceMode2D.Impulse);
+        character.TriggerInvulnerable();
+        rb.AddForce((int)transform.localScale.x * transform.right * dashForce, ForceMode2D.Impulse);
+    }
+
+    public void PlayerHurt()
+    {
+        player_ani.Play("Death");
     }
 }
 
