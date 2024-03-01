@@ -17,10 +17,11 @@ public class PlayController : MonoBehaviour
     public float speed;
     public float jumpForce;
     public float dashForce;
-    public int jumpMoreTimes;
+    public static int jumpMoreTimes;
     public int curentJumpTimes;
     public bool isAttack;
     public bool isDash;
+    public static bool canatack;
 
 
     private void Awake()
@@ -39,6 +40,8 @@ public class PlayController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canatack = true;
+        jumpMoreTimes = 1;
         curentJumpTimes = 0;
     }
 
@@ -103,15 +106,19 @@ public class PlayController : MonoBehaviour
 
     private void PlayerAttack(InputAction.CallbackContext context)
     {
-        playerAnimation.PlayerAttack();
-        isAttack = true;
+        if (canatack)
+        {
+            playerAnimation.PlayerAttack();
+            isAttack = true;
+        }
     }
 
     private void PlayerDash(InputAction.CallbackContext context)
     {   
         playerAnimation.PlayerDash();
         isDash = true;
-        rb.AddForce(transform.right * dashForce, ForceMode2D.Impulse);
+        rb.AddForce(transform.right * dashForce, 
+            ForceMode2D.Impulse);
     }
 }
 

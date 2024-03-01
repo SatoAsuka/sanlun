@@ -9,6 +9,7 @@ public class fireball1 : MonoBehaviour
     public float destroytime;
     private float time;
     private Transform Trans;
+    bool firstcrush;
     void Start()
     {
         Trans=GetComponent<Transform>();

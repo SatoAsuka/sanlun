@@ -8,7 +8,13 @@ public class PlayerAnimation : MonoBehaviour
     private Rigidbody2D rb;
     private PhysicsCheck physicsCheck;
     private PlayController playController;
+    public int PlayerHealth;
+    bool isHurt;
 
+    private void Start()
+    {
+  
+    }
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -20,6 +26,7 @@ public class PlayerAnimation : MonoBehaviour
     private void Update()
     {
         SetAnimation();
+        Die();
     }
 
     public void SetAnimation()
@@ -33,11 +40,35 @@ public class PlayerAnimation : MonoBehaviour
 
     public void PlayerAttack()
     {
-        anim.SetTrigger("attack");
+            anim.SetTrigger("attack");      
     }
 
     public void PlayerDash()
     {
         anim.SetTrigger("dash");
+    }
+    public void GetHurted(int Damage)
+    {
+            anim.SetBool("Hurt", true);
+            PlayerHealth -= Damage;
+    }
+    void Die()
+    {
+        if (PlayerHealth <= 0)
+        {
+            anim.SetBool("Die", true);
+        }
+    }
+    void DieAnim()
+    {
+        Time.timeScale = 0.4f;
+    }
+    void Destroy()
+    {
+        Destroy(gameObject);
+    }
+    public void Hurtover()
+    {
+            anim.SetBool("Hurt", false);    
     }
 }

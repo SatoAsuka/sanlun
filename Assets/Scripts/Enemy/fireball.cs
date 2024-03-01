@@ -9,6 +9,9 @@ public class fireball : MonoBehaviour
     public float destroytime;
     private float time;
     private Transform Trans;
+    private BoxCollider2D Bc;
+    bool ishurted;
+    public int Damage;
     void Start()
     {
         Trans=GetComponent<Transform>();
@@ -31,5 +34,15 @@ public class fireball : MonoBehaviour
     {
         Trans.position += new Vector3(speed * Time.deltaTime, 0, 0);
     }
-
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (!ishurted)
+            {
+                other.GetComponent<PlayerAnimation>().GetHurted(Damage);
+                ishurted=true;
+            }
+        }
+    }
 }
