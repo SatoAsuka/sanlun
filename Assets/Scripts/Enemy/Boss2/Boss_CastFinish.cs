@@ -5,10 +5,15 @@ using UnityEngine;
 public class Boss_CastFinish : StateMachineBehaviour
 {
     public Boss2 boss2;
+    public SpellDamage spell;
+    public GameObject Spell;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         boss2 = animator.GetComponent<Boss2>();
+        Spell = GameObject.Find("Player");
+        spell = animator.GetComponent<SpellDamage>();
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -20,6 +25,7 @@ public class Boss_CastFinish : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        
         int nub = UnityEngine.Random.Range(3, 5);
         if (nub == 3)
             boss2.state = Boss2State.Walk;

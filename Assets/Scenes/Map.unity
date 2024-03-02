@@ -2485,7 +2485,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb450d15f2e08846a3f98938c51f1b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 69324118}
+  spell: {fileID: 1761600007}
   state: 0
   HP: 1
   currentHP: 0
@@ -2494,7 +2495,10 @@ MonoBehaviour:
   findDis: 2
   dis: 0
   speed: 100
-  Boss2_Damage: 0
+  Boss2_Damage: 10
+  inAttacked: 0
+  inAttacked2: 0
+  Spell: {fileID: 0}
   isFound: 0
 --- !u!68 &436130323
 EdgeCollider2D:
@@ -22326,6 +22330,7 @@ GameObject:
   - component: {fileID: 1761600004}
   - component: {fileID: 1761600006}
   - component: {fileID: 1761600005}
+  - component: {fileID: 1761600007}
   m_Layer: 0
   m_Name: Bringer-of-Death_Spell_1_0
   m_TagString: Untagged
@@ -22342,7 +22347,7 @@ Transform:
   m_GameObject: {fileID: 1761600003}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.29, y: 2.31, z: 0}
+  m_LocalPosition: {x: 0.29000092, y: 2.3099995, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22412,7 +22417,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -1573135001, guid: 1accea7a833e5124ab9a9f5056d871f0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -22422,6 +22427,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1761600007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761600003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de4640973a80f1b49a5bb289d615ffee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 69324118}
+  damage: 10
+  animator: {fileID: 0}
+  inAttacked: 0
+  Boss2: {fileID: 0}
 --- !u!1 &1880208133
 GameObject:
   m_ObjectHideFlags: 0
