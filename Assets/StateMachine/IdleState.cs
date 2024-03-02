@@ -198,7 +198,7 @@ public class AttackState : IState //攻击
         {
             manager.TransitionState(StateType.Hit);
         }
-        if (info.normalizedTime >= .85f)
+        if (info.normalizedTime >= .6f)
         {
             manager.TransitionState(StateType.Chase);
             Attack();
@@ -239,7 +239,7 @@ public class HitState : IState //受伤
     public void OnEnter()
     {
         parameter.animator.Play("Hit");
-        parameter.health--;
+        parameter.health -= 3;
     }
 
     public void OnUpdate()
@@ -288,4 +288,5 @@ public class DeathState : IState
     {
 
     }
+
 }

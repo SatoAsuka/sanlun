@@ -60,11 +60,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6171436603380465067}
   - {fileID: 7003188060319977142}
   - {fileID: 4351447367959519191}
   - {fileID: 677639847088366725}
   - {fileID: 1724174911951413126}
+  - {fileID: 4495270632327763122}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3574650176249524450
@@ -212,6 +212,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3989467702072341869, guid: 3db6c0b8bcd91f24fb6e6bd1cc57ef27, type: 3}
+      propertyPath: 'parameter.chasePoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 677639847088366725}
+    - target: {fileID: 3989467702072341869, guid: 3db6c0b8bcd91f24fb6e6bd1cc57ef27, type: 3}
+      propertyPath: 'parameter.chasePoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1724174911951413126}
+    - target: {fileID: 3989467702072341869, guid: 3db6c0b8bcd91f24fb6e6bd1cc57ef27, type: 3}
+      propertyPath: 'parameter.patrolPoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 7003188060319977142}
+    - target: {fileID: 3989467702072341869, guid: 3db6c0b8bcd91f24fb6e6bd1cc57ef27, type: 3}
+      propertyPath: 'parameter.patrolPoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 4351447367959519191}
+    - target: {fileID: 4757984900227506537, guid: 3db6c0b8bcd91f24fb6e6bd1cc57ef27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757984900227506537, guid: 3db6c0b8bcd91f24fb6e6bd1cc57ef27, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324168955676601022, guid: 3db6c0b8bcd91f24fb6e6bd1cc57ef27, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9057998150993539443, guid: 3db6c0b8bcd91f24fb6e6bd1cc57ef27, type: 3}
       propertyPath: 'parameter.chasePoints.Array.data[0]'
       value: 
@@ -231,10 +259,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5324168955676601022, guid: 3db6c0b8bcd91f24fb6e6bd1cc57ef27, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3909088418610045855}
   m_SourcePrefab: {fileID: 100100000, guid: 3db6c0b8bcd91f24fb6e6bd1cc57ef27, type: 3}
---- !u!4 &6171436603380465067 stripped
+--- !u!1 &3856934682744315749 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5324168955676601022, guid: 3db6c0b8bcd91f24fb6e6bd1cc57ef27, type: 3}
+  m_PrefabInstance: {fileID: 8963758496992458203}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3909088418610045855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3856934682744315749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae3197f7d62e9e4a8e2da5e2729fa3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &4495270632327763122 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3008670876834596976, guid: 3db6c0b8bcd91f24fb6e6bd1cc57ef27, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4757984900227506537, guid: 3db6c0b8bcd91f24fb6e6bd1cc57ef27, type: 3}
   m_PrefabInstance: {fileID: 8963758496992458203}
   m_PrefabAsset: {fileID: 0}
