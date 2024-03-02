@@ -12,6 +12,7 @@ TagManager:
   - Boss2
   - Enemy
   - EnemySkeleton
+  - Drop
   layers:
   - Default
   - TransparentFX

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    private Animator anim;
+    public static Animator anim;
     private Rigidbody2D rb;
     private PhysicsCheck physicsCheck;
     private PlayController playController;
@@ -32,13 +32,16 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
-        SetAnimation();
-        Die();
+        if (!isdie)
+        {
+            SetAnimation();
+            Die();
+        }
     }
 
     public void SetAnimation()
     {
-       
+        
             anim.SetFloat("velocityX", Mathf.Abs(rb.velocity.x));//水平速度赋值
             anim.SetFloat("velocityY", rb.velocity.y);//竖直速度赋值
             anim.SetBool("isGround", physicsCheck.isGround);//将是否触地导入
@@ -48,12 +51,18 @@ public class PlayerAnimation : MonoBehaviour
 
     public void PlayerAttack()
     {
-            anim.SetTrigger("attack");      
+        if (!isdie)
+        {
+            anim.SetTrigger("attack");
+        }
     }
 
     public void PlayerDash()
     {
-        anim.SetTrigger("dash");
+        if (!isdie)
+        {
+            anim.SetTrigger("dash");
+        }
     }
     public void GetHurted(int Damage)
     {
@@ -101,6 +110,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         Player.transform.position=Home.transform.position;
         anim.SetBool("Die", false);
+        isdie = false;
         PlayerHealth=HealthBar.HealthCurrent = HealthBar.HealthMax = 30;
     }
 }
