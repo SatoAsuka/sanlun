@@ -118,7 +118,8 @@ public class Boss2 : MonoBehaviour
         state = Boss2State.Hurt;
         if(currentHP > 0)
             currentHP -= boss2Damage;
-        if(currentHP <= 0)
+        boss_ani.SetTrigger("Hurt");
+        if (currentHP <= 0)
         {
             state = Boss2State.Death;
         }

@@ -38,11 +38,12 @@ public class PlayerAnimation : MonoBehaviour
 
     public void SetAnimation()
     {
-        anim.SetFloat("velocityX", Mathf.Abs(rb.velocity.x));//水平速度赋值
-        anim.SetFloat("velocityY", rb.velocity.y);//竖直速度赋值
-        anim.SetBool("isGround", physicsCheck.isGround);//将是否触地导入
-        anim.SetBool("isAttack",playController.isAttack);//是否攻击
-        anim.SetBool("isDash", playController.isDash);
+       
+            anim.SetFloat("velocityX", Mathf.Abs(rb.velocity.x));//水平速度赋值
+            anim.SetFloat("velocityY", rb.velocity.y);//竖直速度赋值
+            anim.SetBool("isGround", physicsCheck.isGround);//将是否触地导入
+            anim.SetBool("isAttack", playController.isAttack);//是否攻击
+            anim.SetBool("isDash", playController.isDash);
     }
 
     public void PlayerAttack()
@@ -84,6 +85,10 @@ public class PlayerAnimation : MonoBehaviour
     {
             anim.SetBool("Hurt", false);    
     }
+    public void Dieover()
+    {
+        anim.SetBool("Die", false);
+    }
     void godash()
     {
         IsDash = true;
@@ -95,8 +100,7 @@ public class PlayerAnimation : MonoBehaviour
     public void ReLive()
     {
         Player.transform.position=Home.transform.position;
-        Time.timeScale = 1.0f;
         anim.SetBool("Die", false);
-        HealthBar.HealthCurrent = HealthBar.HealthMax = 30;
+        PlayerHealth=HealthBar.HealthCurrent = HealthBar.HealthMax = 30;
     }
 }
