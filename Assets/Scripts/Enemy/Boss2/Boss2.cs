@@ -22,6 +22,7 @@ public class Boss2 : MonoBehaviour
     Rigidbody2D boss_rb;
     Animator boss_ani;
     public GameObject player;
+    public SpellDamage spell;
 
 
     public Boss2State state;
@@ -34,6 +35,9 @@ public class Boss2 : MonoBehaviour
     public float dis;
     public float speed;
     public int Boss2_Damage;
+    public bool inAttacked;
+    public bool inAttacked2;
+    public GameObject Spell;
 
     public bool isFound;
     
@@ -44,6 +48,7 @@ public class Boss2 : MonoBehaviour
         boss_rb = GetComponent<Rigidbody2D>();
         boss_ani = GetComponent<Animator>();
         boss_trans = GetComponent<Transform>();
+        //spell = Spell.GetComponent<SpellDamage>();
 
         isFound = false;
         currentHP = HP;
@@ -94,10 +99,18 @@ public class Boss2 : MonoBehaviour
                 }
             case Boss2State.Cast: 
                 {
-                    boss_ani.Play("Cast");
+                    Cast();
+                    
                     break;
                 }
         }
+    }
+
+    private void Cast()
+    {
+        boss_ani.Play("Cast");
+        inAttacked2 = true;
+        //spell.spell();
     }
 
     public void Hurt(int boss2Damage)
@@ -187,9 +200,11 @@ public class Boss2 : MonoBehaviour
         if (state != Boss2State.Death && state != Boss2State.Cast && state != Boss2State.Hurt)
             state = Boss2State.Attack;
         int Damage = Boss2_Damage;
-        other.GetComponent<PlayerAnimation>().GetHurted(Damage);
-
-
+        if (inAttacked)
+        {
+            other.GetComponent<PlayerAnimation>().GetHurted(Damage);
+            inAttacked = false;
+        }
     }
 
     public void Dying()
