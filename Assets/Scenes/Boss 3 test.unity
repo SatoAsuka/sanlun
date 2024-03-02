@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   destroytime: 4
+  Damage: 0
 --- !u!1 &920815612
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +288,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 2.56}
+    oldSize: {x: 10.24, y: 5.12}
     newSize: {x: 5.12, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -530,6 +531,14 @@ PrefabInstance:
     - target: {fileID: 9094586981443132888, guid: 297ce09c114763a4ea8778cf9a526dff, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 9094586981443132888, guid: 297ce09c114763a4ea8778cf9a526dff, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9094586981443132888, guid: 297ce09c114763a4ea8778cf9a526dff, type: 3}
+      propertyPath: m_TagString
+      value: Boss3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -9,6 +9,7 @@ public class FirePillar : MonoBehaviour
     public float Speed;
     public int Damge;
     public bool IsBoom;
+    bool ishurted;
     void Awake()
     {
         ani = GetComponent<Animator>();
@@ -20,7 +21,7 @@ public class FirePillar : MonoBehaviour
     }
     void Start()
     {
-        
+        ishurted = false;
     }
 
     void Update()
@@ -62,16 +63,11 @@ public class FirePillar : MonoBehaviour
             ani.Play("boom");
             music.Play();
 
-            // 获取攻击力（damage）为火球的伤害值
             int damage = Damge;
-
-            // 碰撞到的对象应该具有 Character 组件
-            Character character = collision.GetComponent<Character>();
-
-            // 如果 Character 组件不为空，则调用 TakeDamage 方法
-            if (character != null)
+            if (!ishurted)
             {
-                character.TakeDamage(new Attack { damage = damage });
+                collision.GetComponent<PlayerAnimation>().GetHurted(damage);
+                ishurted = true;
             }
         }
     }

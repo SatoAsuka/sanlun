@@ -16,8 +16,11 @@ public class FireBall : MonoBehaviour
 
     public float LifeTime;
 
+    bool ishurted;
+
     void Start()
     {
+        ishurted = false;
         Boss = GameObject.Find("Boss1");
         animator = GetComponent<Animator>();
         collider2d = GetComponent<Collider2D>();
@@ -67,16 +70,11 @@ public class FireBall : MonoBehaviour
         {
             animator.Play("Hit");
 
-            // 获取攻击力（damage）为火球的伤害值
             int damage = Damge;
-
-            // 碰撞到的对象应该具有 Character 组件
-            Character character = collision.GetComponent<Character>();
-
-            // 如果 Character 组件不为空，则调用 TakeDamage 方法
-            if (character != null)
+            if (!ishurted)
             {
-                character.TakeDamage(new Attack { damage = damage });
+                collision.GetComponent<PlayerAnimation>().GetHurted(damage);
+                ishurted = true;
             }
         }
         else if (collision.CompareTag("Ground"))

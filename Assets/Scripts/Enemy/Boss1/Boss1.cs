@@ -46,6 +46,7 @@ public class Boss1 : MonoBehaviour
 
     public bool isHit;
     public bool isDead;
+    bool ishurted;
 
     void Awake()
     {
@@ -282,30 +283,20 @@ public class Boss1 : MonoBehaviour
     {
         AttackAudio.Play();
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && state == BossState.Dash)
+        {
+            collision.GetComponent<PlayerAnimation>().GetHurted(MoveDamge);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("AirWall") && state == BossState.Dash)
         {
             C_tra.localScale = new Vector3(-C_tra.localScale.x, C_tra.localScale.y, C_tra.localScale.z);
             state = BossState.FireBall;
-        }
-        else if (collision.collider.CompareTag("Player") && state == BossState.Dash)
-        {
-            Debug.Log("与Player碰撞");
-            //如果Boss正在执行Dash技能，并且与被标记为“Player”的碰撞体发生了碰撞，
-            //那么Boss将会对玩家造成伤害（BeHit），根据玩家的位置来确定伤害的方向。
-
-            // 获取攻击力（damage）为火球的伤害值
-            int damage = MoveDamge;
-
-            // 碰撞到的对象应该具有 Character 组件
-            Character character = collision.gameObject.GetComponent<Character>();
-
-            // 如果 Character 组件不为空，则调用 TakeDamage 方法
-            if (character != null)
-            {
-                character.TakeDamage(new Attack { damage = damage });
-            }
         }
     }
 }

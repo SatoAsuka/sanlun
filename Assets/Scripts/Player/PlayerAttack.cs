@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public int Boss3Damage;
+    public int Boss1Damage;
+    public int EnemyDamage;
+
     private BoxCollider2D Bc;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +21,18 @@ public class PlayerAttack : MonoBehaviour
         if (other.CompareTag("Boss3"))
         {
             other.GetComponent<Boss3>().GetHurted(Boss3Damage);
+        }
+        if (other.CompareTag("Boss1"))
+        {
+            other.GetComponent<Boss1>().BeHit(Boss1Damage);
+        }
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<Enemy>().TakeDamage(EnemyDamage);
+        }
+        if (other.CompareTag("EnemySkeleton"))
+        {
+            other.GetComponent<FSM>().TakeDamage();
         }
     }
     void Update()
