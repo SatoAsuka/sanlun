@@ -169,4 +169,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3.5
   destroytime: 6
-  Damage: 22
+  Damage: 30

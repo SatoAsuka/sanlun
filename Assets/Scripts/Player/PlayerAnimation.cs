@@ -12,6 +12,8 @@ public class PlayerAnimation : MonoBehaviour
     public bool IsDash;
     private ScreenFlash sf;
     bool isdie;
+    public GameObject Player;
+    public GameObject Home;
 
     private void Start()
     { 
@@ -72,7 +74,7 @@ public class PlayerAnimation : MonoBehaviour
     }
     void DieAnim()
     {
-        Time.timeScale = 0.4f;
+       
     }
     void Destroy()
     {
@@ -89,5 +91,12 @@ public class PlayerAnimation : MonoBehaviour
     void dashover()
     {
         IsDash = false;
+    }
+    public void ReLive()
+    {
+        Player.transform.position=Home.transform.position;
+        Time.timeScale = 1.0f;
+        anim.SetBool("Die", false);
+        HealthBar.HealthCurrent = HealthBar.HealthMax = 30;
     }
 }
