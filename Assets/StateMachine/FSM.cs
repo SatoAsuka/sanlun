@@ -12,6 +12,7 @@ public enum StateType
 public class Parameter
 {
     public int health;
+    public int damage;
     public float moveSpeed;
     public float chaseSpeed;
     public float idleTime;
@@ -50,10 +51,7 @@ public class FSM : MonoBehaviour
     {
         currentState.OnUpdate();
 
-        //if (Input.GetKeyDown(KeyCode.Return))
-        //{
-        //    parameter.getHit = true;
-        //}
+        
     }
 
     public void TransitionState(StateType type)
@@ -98,5 +96,10 @@ public class FSM : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(parameter.attackPoint.position, parameter.attackArea);
+    }
+
+    public void TakeDamage()
+    {
+        parameter.getHit = true;
     }
 }

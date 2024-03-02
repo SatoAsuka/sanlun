@@ -94,7 +94,7 @@ public class PatrolState : IState
     }
 }
 
-public class ChaseState : IState
+public class ChaseState : IState //追击
 {
     private FSM manager;
     private Parameter parameter;
@@ -138,7 +138,7 @@ public class ChaseState : IState
     }
 }
 
-public class ReactState : IState
+public class ReactState : IState //反应状态
 {
     private FSM manager;
     private Parameter parameter;
@@ -174,7 +174,7 @@ public class ReactState : IState
     }
 }
 
-public class AttackState : IState
+public class AttackState : IState //攻击
 {
     private FSM manager;
     private Parameter parameter;
@@ -198,9 +198,10 @@ public class AttackState : IState
         {
             manager.TransitionState(StateType.Hit);
         }
-        if (info.normalizedTime >= .95f)
+        if (info.normalizedTime >= .85f)
         {
             manager.TransitionState(StateType.Chase);
+            Attack();
         }
     }
 
@@ -208,9 +209,23 @@ public class AttackState : IState
     {
 
     }
+
+    public void Attack()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(parameter.attackPoint.position, parameter.attackArea, parameter.targetLayer);
+        foreach (Collider2D collider in colliders)
+        {
+            PlayerAnimation player = collider.GetComponent<PlayerAnimation>();
+            if (player != null)
+            {
+                // 玩家受到攻击
+                player.GetHurted(parameter.damage);
+            }
+        }
+    }
 }
 
-public class HitState : IState
+public class HitState : IState //受伤
 {
     private FSM manager;
     private Parameter parameter;

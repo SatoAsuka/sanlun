@@ -63,15 +63,17 @@ public class PlayController : MonoBehaviour
     private void Update()// Update is called once per frame
     {
         inputDirection = inputControl.GamePlay.Move.ReadValue<Vector2>();
-        
+        if (isAttack)
+            rb.velocity = new Vector2(0,rb.velocity.y);
+
+
     }
 
     private void FixedUpdate()
-    {
-        if(!isAttack)
+    {        
+        if (!isAttack)
             Move();
         JumpMore();
-
     }
 
     public void Move()
@@ -123,7 +125,7 @@ public class PlayController : MonoBehaviour
     {   
         playerAnimation.PlayerDash();
         isDash = true;
-        character.TriggerInvulnerable();
+        //character.TriggerInvulnerable();
         rb.AddForce((int)transform.localScale.x * transform.right * dashForce, ForceMode2D.Impulse);
     }
 

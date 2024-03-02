@@ -58,10 +58,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
-            //if(playerHealth != null)
-            //{
-            //    playerHealth.DamagePlayer(damage);
-            //}
+            other.GetComponent<PlayerAnimation>().GetHurted(damage);
         }
     }
 }

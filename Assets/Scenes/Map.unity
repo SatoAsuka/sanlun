@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac28c11f8a1f974b9d1d84862e240eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bottomOffset: {x: 0.04, y: 0.18}
+  bottomOffset: {x: 0.04, y: 0.33}
   checkRaduis: 0.35
   groundLayer:
     serializedVersion: 2
