@@ -10,6 +10,9 @@ public class fireball1 : MonoBehaviour
     private float time;
     private Transform Trans;
     bool firstcrush;
+    private BoxCollider2D Bc;
+    bool ishurted;
+    public int Damage;
     void Start()
     {
         Trans=GetComponent<Transform>();
@@ -31,6 +34,17 @@ public class fireball1 : MonoBehaviour
     private void move()
     {
         Trans.position -= new Vector3(0, speed * Time.deltaTime, 0);
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (!ishurted)
+            {
+                other.GetComponent<PlayerAnimation>().GetHurted(Damage);
+                ishurted = true;
+            }
+        }
     }
 
 }

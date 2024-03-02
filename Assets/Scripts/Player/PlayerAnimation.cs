@@ -9,11 +9,11 @@ public class PlayerAnimation : MonoBehaviour
     private PhysicsCheck physicsCheck;
     private PlayController playController;
     public int PlayerHealth;
-    bool isHurt;
+    public bool IsDash;
 
     private void Start()
-    {
-  
+    { 
+        IsDash = false;
     }
     private void Awake()
     {
@@ -49,8 +49,11 @@ public class PlayerAnimation : MonoBehaviour
     }
     public void GetHurted(int Damage)
     {
+        if (!IsDash)
+        {
             anim.SetBool("Hurt", true);
             PlayerHealth -= Damage;
+        }
     }
     void Die()
     {
@@ -70,5 +73,13 @@ public class PlayerAnimation : MonoBehaviour
     public void Hurtover()
     {
             anim.SetBool("Hurt", false);    
+    }
+    void godash()
+    {
+        IsDash = true;
+    }
+    void dashover()
+    {
+        IsDash = false;
     }
 }
