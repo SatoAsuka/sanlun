@@ -20,9 +20,13 @@ public class Boss_DeathFinish : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (boss2.HP > 0)
+        if (boss2.currentHP > 0)
         {
             boss2.state = Boss2State.Cast;
+        }
+        else 
+        {
+            boss2.Dying();
         }
         
     }
