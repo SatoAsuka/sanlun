@@ -10,10 +10,15 @@ public class PlayerAnimation : MonoBehaviour
     private PlayController playController;
     public int PlayerHealth;
     public bool IsDash;
+    private ScreenFlash sf;
+    bool isdie;
 
     private void Start()
     { 
         IsDash = false;
+        sf=GetComponent<ScreenFlash>();
+        HealthBar.HealthMax = PlayerHealth;
+        HealthBar.HealthCurrent = PlayerHealth;
     }
     private void Awake()
     {
@@ -49,10 +54,12 @@ public class PlayerAnimation : MonoBehaviour
     }
     public void GetHurted(int Damage)
     {
-        if (!IsDash)
+        if (!IsDash&&!isdie)
         {
+            sf.FlashScreen();
             anim.SetBool("Hurt", true);
             PlayerHealth -= Damage;
+            HealthBar.HealthCurrent = PlayerHealth;
         }
     }
     void Die()
@@ -60,6 +67,7 @@ public class PlayerAnimation : MonoBehaviour
         if (PlayerHealth <= 0)
         {
             anim.SetBool("Die", true);
+            isdie = true;
         }
     }
     void DieAnim()
