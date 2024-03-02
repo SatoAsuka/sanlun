@@ -343,7 +343,7 @@ Transform:
   m_GameObject: {fileID: 69324118}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -99.19, y: -34.23, z: 0}
+  m_LocalPosition: {x: 76.91, y: -0.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2484,7 +2484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb450d15f2e08846a3f98938c51f1b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 69324118}
   state: 0
   HP: 1
   waitTime: 0
@@ -13510,7 +13510,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.060909748, y: 1.2356131}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -13520,7 +13520,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.2704191, y: 1.1740298}
   m_EdgeRadius: 0
 --- !u!114 &644733580
 MonoBehaviour:
@@ -22961,3 +22961,4 @@ SceneRoots:
   - {fileID: 1125573154}
   - {fileID: 1648369428}
   - {fileID: 436130328}
+  - {fileID: 312925115}

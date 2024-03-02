@@ -45,7 +45,7 @@ public class PlayController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        canatack = false;
+        canatack = true;
         jumpMoreTimes = 1;
         curentJumpTimes = 0;
     }
