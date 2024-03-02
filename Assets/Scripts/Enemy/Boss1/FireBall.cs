@@ -29,7 +29,7 @@ public class FireBall : MonoBehaviour
 
         Speed = 5;
 
-        Damge = 8;
+        Damge = 4;
 
         LifeTime = 7f;
     }

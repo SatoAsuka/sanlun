@@ -60,10 +60,10 @@ public class Boss1 : MonoBehaviour
 
         state = BossState.Idle;
 
-        MaxHp = 60;
+        MaxHp = 70;
         Hp = MaxHp;
 
-        MoveDamge = 20;
+        MoveDamge = 2;
 
         Speed = 12;
 
