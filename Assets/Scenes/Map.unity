@@ -13538,9 +13538,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Boss3Damage: 5
-  Boss1Damage: 0
+  Boss1Damage: 4
   Boss2Damage: 5
-  EnemyDamage: 0
+  EnemyDamage: 2
 --- !u!1 &656869957
 GameObject:
   m_ObjectHideFlags: 0
@@ -13555,7 +13555,7 @@ GameObject:
   - component: {fileID: 656869961}
   m_Layer: 3
   m_Name: Home
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15750,7 +15750,7 @@ GameObject:
   - component: {fileID: 686246838}
   m_Layer: 3
   m_Name: second
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16431,6 +16431,79 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!1001 &707945480
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 612939472421274088, guid: d503e97d280ae3b459f7fee7c7a2ae52, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 612939472421274088, guid: d503e97d280ae3b459f7fee7c7a2ae52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 612939472421274088, guid: d503e97d280ae3b459f7fee7c7a2ae52, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.5592657
+      objectReference: {fileID: 0}
+    - target: {fileID: 612939472421274088, guid: d503e97d280ae3b459f7fee7c7a2ae52, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 612939472421274088, guid: d503e97d280ae3b459f7fee7c7a2ae52, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 612939472421274088, guid: d503e97d280ae3b459f7fee7c7a2ae52, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 612939472421274088, guid: d503e97d280ae3b459f7fee7c7a2ae52, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 612939472421274088, guid: d503e97d280ae3b459f7fee7c7a2ae52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 612939472421274088, guid: d503e97d280ae3b459f7fee7c7a2ae52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 612939472421274088, guid: d503e97d280ae3b459f7fee7c7a2ae52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695800824679991138, guid: d503e97d280ae3b459f7fee7c7a2ae52, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695800824679991138, guid: d503e97d280ae3b459f7fee7c7a2ae52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816684260295060637, guid: d503e97d280ae3b459f7fee7c7a2ae52, type: 3}
+      propertyPath: m_Name
+      value: Boss1 All
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376551873604862479, guid: d503e97d280ae3b459f7fee7c7a2ae52, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376551873604862479, guid: d503e97d280ae3b459f7fee7c7a2ae52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.29
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d503e97d280ae3b459f7fee7c7a2ae52, type: 3}
 --- !u!1 &745302453
 GameObject:
   m_ObjectHideFlags: 0
@@ -23073,3 +23146,4 @@ SceneRoots:
   - {fileID: 1648369428}
   - {fileID: 436130328}
   - {fileID: 312925115}
+  - {fileID: 707945480}

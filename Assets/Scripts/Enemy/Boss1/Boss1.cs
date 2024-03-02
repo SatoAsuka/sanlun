@@ -60,7 +60,7 @@ public class Boss1 : MonoBehaviour
 
         state = BossState.Idle;
 
-        MaxHp = 200;
+        MaxHp = 60;
         Hp = MaxHp;
 
         MoveDamge = 20;
@@ -69,7 +69,7 @@ public class Boss1 : MonoBehaviour
 
         isDead = false;
 
-        IdleTime = 5f;
+        IdleTime = 2f;
         FirePillarCd = 20f;
         time = 1f;
 
