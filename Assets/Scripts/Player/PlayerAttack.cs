@@ -6,6 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     public int Boss3Damage;
     public int Boss1Damage;
+    public int Boss2Damage;
     public int EnemyDamage;
 
     private BoxCollider2D Bc;
@@ -25,6 +26,10 @@ public class PlayerAttack : MonoBehaviour
         if (other.CompareTag("Boss1"))
         {
             other.GetComponent<Boss1>().BeHit(Boss1Damage);
+        }
+        if (other.CompareTag("Boss2"))
+        {
+            other.GetComponent<Boss2>().Hurt(Boss2Damage);
         }
         if (other.CompareTag("Enemy"))
         {

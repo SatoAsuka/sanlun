@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss_AttackFinish : StateMachineBehaviour
+public class Spell : StateMachineBehaviour
 {
-    public Boss2 boss2;
+    public SpellDamage SpellDamage;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        boss2 = animator.GetComponent<Boss2>();
+        SpellDamage = animator.GetComponent<SpellDamage>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -20,9 +20,7 @@ public class Boss_AttackFinish : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        int Damage = boss2.Boss2_Damage;
-        boss2.state = Boss2State.Death;
-        boss2.inAttacked = true;
+        SpellDamage.inAttacked = true;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

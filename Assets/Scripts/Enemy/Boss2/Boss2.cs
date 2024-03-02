@@ -22,16 +22,22 @@ public class Boss2 : MonoBehaviour
     Rigidbody2D boss_rb;
     Animator boss_ani;
     public GameObject player;
+    public SpellDamage spell;
 
 
     public Boss2State state;
 
     public float HP;
+    public float currentHP;
     public float waitTime;
     public float currTime;
     public float findDis;
     public float dis;
     public float speed;
+    public int Boss2_Damage;
+    public bool inAttacked;
+    public bool inAttacked2;
+    public GameObject Spell;
 
     public bool isFound;
     
@@ -42,8 +48,10 @@ public class Boss2 : MonoBehaviour
         boss_rb = GetComponent<Rigidbody2D>();
         boss_ani = GetComponent<Animator>();
         boss_trans = GetComponent<Transform>();
+        //spell = Spell.GetComponent<SpellDamage>();
 
         isFound = false;
+        currentHP = HP;
     }
 
     // Start is called before the first frame update
@@ -91,16 +99,35 @@ public class Boss2 : MonoBehaviour
                 }
             case Boss2State.Cast: 
                 {
-                    boss_ani.Play("Cast");
+                    Cast();
+                    
                     break;
                 }
+        }
+    }
+
+    private void Cast()
+    {
+        boss_ani.Play("Cast");
+        inAttacked2 = true;
+        //spell.spell();
+    }
+
+    public void Hurt(int boss2Damage)
+    {
+        state = Boss2State.Hurt;
+        if(currentHP > 0)
+            currentHP -= boss2Damage;
+        if(currentHP <= 0)
+        {
+            state = Boss2State.Death;
         }
     }
 
     private void Death()
     {
         boss_ani.Play("Death");
-        if (HP == 0)
+        if (currentHP <= 0)
         {
 
         }
@@ -112,7 +139,7 @@ public class Boss2 : MonoBehaviour
             else boss_dir = -1;
 
             boss_rb.velocity = new Vector2(boss_dir * speed * Time.deltaTime, boss_rb.velocity.y);
-            transform.localScale = new Vector3(boss_dir, 1, 1);
+            transform.localScale = new Vector3(5 * boss_dir, 5, 1);
         }
 
     }
@@ -126,7 +153,7 @@ public class Boss2 : MonoBehaviour
         else boss_dir = -1;
 
         boss_rb.velocity = new Vector2(boss_dir * speed * Time.deltaTime, boss_rb.velocity.y);
-        transform.localScale = new Vector3(boss_dir, 1, 1);
+        transform.localScale = new Vector3(5 * boss_dir, 5, 1);
 
         if (dis > findDis)
         {
@@ -147,7 +174,7 @@ public class Boss2 : MonoBehaviour
         else boss_dir = -1;
 
         boss_rb.velocity = new Vector2(-1 * boss_dir * speed * Time.deltaTime, boss_rb.velocity.y);
-        transform.localScale = new Vector3(boss_dir, 1, 1);
+        transform.localScale = new Vector3(5 * boss_dir, 5, 1);
     }
 
     private void Idle()
@@ -170,7 +197,18 @@ public class Boss2 : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if(state != Boss2State.Death && state != Boss2State.Cast && state != Boss2State.Hurt)
+        if (state != Boss2State.Death && state != Boss2State.Cast && state != Boss2State.Hurt)
             state = Boss2State.Attack;
+        int Damage = Boss2_Damage;
+        if (inAttacked)
+        {
+            other.GetComponent<PlayerAnimation>().GetHurted(Damage);
+            inAttacked = false;
+        }
+    }
+
+    public void Dying()
+    {
+        Destroy(gameObject);
     }
 }
