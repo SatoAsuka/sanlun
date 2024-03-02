@@ -32,11 +32,8 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
-        if (!isdie)
-        {
             SetAnimation();
             Die();
-        }
     }
 
     public void SetAnimation()
@@ -51,18 +48,16 @@ public class PlayerAnimation : MonoBehaviour
 
     public void PlayerAttack()
     {
-        if (!isdie)
-        {
+     
+
             anim.SetTrigger("attack");
-        }
+
     }
 
     public void PlayerDash()
     {
-        if (!isdie)
-        {
+  
             anim.SetTrigger("dash");
-        }
     }
     public void GetHurted(int Damage)
     {
